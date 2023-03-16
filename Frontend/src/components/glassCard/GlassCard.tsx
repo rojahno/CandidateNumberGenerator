@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import { HBox } from "../hBox/HBox";
+import { Modal } from "../modal/Modal";
 import { VBox } from "../vBox/VBox";
 import "./GlassCard.css";
 
@@ -19,6 +21,11 @@ export const GlassCard = () => {
         console.log(data);
 
         setFetchedId(data);
+    }
+
+    function resetCandidateNumber() {
+        setFetchedId("");
+        setCNumber("");
     }
 
     useEffect(() => {
@@ -71,9 +78,14 @@ export const GlassCard = () => {
                             {cNumber}
                         </p>
                     </div>
-                    <button className="glass-button" onClick={getCandidateNumber}>
-                        Generate
-                    </button>
+                    <HBox>
+                        <button className="glass-button" onClick={getCandidateNumber}>
+                            Generate
+                        </button>
+                        <button className="glass-button" onClick={resetCandidateNumber}>
+                            Reset
+                        </button>
+                    </HBox>
                 </VBox>
             </div>
         </div>

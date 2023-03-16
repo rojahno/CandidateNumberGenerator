@@ -47,7 +47,8 @@
 
 .glass-button {
     display: inline-block;
-    /* padding: 18px 26px; */
+    padding: 24px 24px;
+    margin:5px;
     border: 0;
     text-decoration: none;
     border-radius: 15px;
@@ -59,6 +60,9 @@
     letter-spacing: 2px;
     cursor: pointer;
     text-transform: uppercase;
-    aspect-ratio: 5/1;
+    width: 100%;
+    /* aspect-ratio: 5/1; */
 }
-
+.glass-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
