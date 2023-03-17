@@ -2,6 +2,7 @@ import fs from "fs";
 
 function getCandidateNumber() {
   let numberList = getCandidateNumberList();
+  if (numberList.length === 0) return "No numbers generated";
   let inUse = true;
   let candidateNumber = "";
   while (inUse) {
@@ -14,9 +15,14 @@ function getCandidateNumber() {
 }
 
 function getCandidateNumberList() {
-  let data = fs.readFileSync("data/candidateNumbers.txt", "utf8");
-  let candidateNumberList = data.split("\n");
-  return candidateNumberList;
+  try {
+    let data = fs.readFileSync("data/candidateNumbers.txt", "utf8");
+    let candidateNumberList = data.split("\n");
+    return candidateNumberList;
+  } catch (err) {
+    console.log(err);
+    return [];
+  }
 }
 
 function getUsedList() {
