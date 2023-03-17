@@ -25,6 +25,35 @@ export const FrontPage = () => {
                 console.log(data);
             });
     }
+
+    function resetCandidateNumber() {
+        let URL = "http://localhost:8080/api/reset";
+        fetch(URL, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+            });
+    }
+
+    function create_new() {
+        let URL = "http://localhost:8080/api/create-new";
+        fetch(URL, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+            });
+    }
+
     return (
         <div className="background">
             <Center>
@@ -32,11 +61,14 @@ export const FrontPage = () => {
                 <img className="settings" src={settings} onClick={toggle}></img>
                 <Modal onCancel={toggle} onOk={toggle} visible={open}>
                     <VBox>
-                        <button className="styled-button" onClick={generateCandidateNumber}>
-                            Generate Candidate Numbers
+                        <button className="styled-button" onClick={create_new}>
+                            Create New
                         </button>
-                        <button className="styled-button" onClick={toggle}>
-                            Reset used candidate numbers
+                        <button className="styled-button" onClick={generateCandidateNumber}>
+                            Generate New Numbers
+                        </button>
+                        <button className="styled-button" onClick={resetCandidateNumber}>
+                            Reset Used Numbers
                         </button>
                         <button className="styled-button">Fun</button>
                     </VBox>

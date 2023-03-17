@@ -18,7 +18,22 @@ function generateCandidateNumber() {
   return candidateNumber;
 }
 
-function storeCandidateNumber() {
+function reset_used_list() {
+  fs.writeFile(
+    "data/usedCandidateNumbers.txt",
+    "",
+    {
+      encoding: "utf8",
+      flag: "w",
+      mode: 0o666,
+    },
+    (err) => {
+      if (err) console.log("storecandidateNumber error:");
+    }
+  );
+}
+
+function generateCandidateNumbers() {
   const candidateNumberSet = new Set();
   while (candidateNumberSet.size < 1000) {
     candidateNumberSet.add(generateCandidateNumber());
@@ -38,19 +53,6 @@ function storeCandidateNumber() {
       if (err) console.log("storecandidateNumber error:");
     }
   );
-
-  fs.writeFile(
-    "data/usedCandidateNumbers.txt",
-    "",
-    {
-      encoding: "utf8",
-      flag: "w",
-      mode: 0o666,
-    },
-    (err) => {
-      if (err) console.log("storecandidateNumber error:");
-    }
-  );
 }
 
-export { storeCandidateNumber };
+export { generateCandidateNumbers, reset_used_list };

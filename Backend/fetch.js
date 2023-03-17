@@ -1,4 +1,5 @@
 import fs from "fs";
+
 function getCandidateNumber() {
   let numberList = getCandidateNumberList();
   let inUse = true;
